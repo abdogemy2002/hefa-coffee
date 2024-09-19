@@ -1,0 +1,573 @@
+:root {
+  --light-gray: #d5dadeff;
+  --dark-gray-bg: rgb(172, 175, 177);
+
+  --brown-sugar: rgb(208, 144, 109);
+  --caput-mortuum: #41201cff;
+  --rich-black: #08071eff;
+  --french-gray: #acbbc2ff;
+
+  --dark-charcoal: #3b3a3eff;
+  --dark-slate-gray: #3a3f44ff;
+  --peach-puff: rgb(254, 234, 168);
+  --lavender: #e6e6faff;
+  --midnight-blue: #2c3e50ff;
+  --gold: #ffd700ff;
+  --sky-blue: #87ceebff;
+  --coral: #ff7f50ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: kufam;
+  direction: rtl;
+}
+.onTop {
+  z-index: 1000;
+}
+
+.logo {
+  filter: brightness(1.4);
+}
+
+.navbar {
+  background: linear-gradient(
+    180deg,
+    var(--caput-mortuum),
+    rgba(109, 84, 43, 0.18),
+    transparent
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after {
+  width: 100%;
+}
+
+.navbar ul li a.active {
+  color: var(--peach-puff);
+  font-size: larger;
+  border-radius: 5px;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.navbar ul li {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--brown-sugar);
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.navbar.dark {
+  transition: all 0.36s ease;
+}
+
+.navbar.dark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, var(--caput-mortuum), transparent);
+  background: var(--caput-mortuum);
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul li {
+    margin: 1.5rem 0;
+    transition: all 0.2s ease;
+    transition: transform 0.2s ease;
+  }
+  .navbar ul li:hover {
+    filter: drop-shadow(0 0 0.5em rgba(255, 217, 0, 0.836));
+  }
+  .nav-menu ul li.clicked {
+    transform: translateY(4px);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(
+      180deg,
+      var(--caput-mortuum) 30%,
+      rgb(0, 0, 0, 0.9) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    position: absolute;
+    top: 60px;
+    left: 0;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.36s ease, transform 0.36s ease;
+    z-index: -5;
+  }
+
+  .nav-toggle:checked + .hamburger + .nav-menu {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: -5;
+  }
+}
+
+.hero {
+  position: relative;
+  background-image: url("assets/morning-with-turkish-coffee-brewing.jpg"),
+    linear-gradient(to bottom, transparent 80%, var(--light-gray) 100%);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: var(--lavender);
+  text-align: center;
+  overflow: hidden;
+  background-blend-mode: overlay;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero .landing,
+.hero .row,
+.hero .landing-text {
+  position: relative;
+  z-index: 2;
+}
+
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.col-1{
+  width: 20%;
+}
+.col-2{
+  width: 45%;
+}
+.col-3{
+  width: 70%;
+}
+
+.landing-text {
+  max-width: 80%;
+  font-family: Kufam;
+  padding: 2rem;
+  border-radius: 10px;
+  color: var(--peach-puff);
+}
+
+.main-btn {
+  background-color: var(--rich-black);
+  background: linear-gradient(150deg, var(--caput-mortuum) 60%, var(--coral));
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--c);
+  border-radius: 25px;
+  color: var(--lavender);
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin: 8px;
+}
+
+.main-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15),
+    transparent 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.main-btn:hover {
+  color: var(--rich-black);
+  background: linear-gradient(
+    135deg,
+    var(--brown-sugar),
+    rgba(255, 217, 0, 0.67)
+    
+  );
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.main-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.main-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.main-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(178, 122, 92, 0.5);
+}
+
+.hero-img {
+  max-width: 35%;
+  filter: drop-shadow(0 0 2em rgba(0, 0, 0, 0.449));
+  filter: brightness(1.4);
+  margin: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-img {
+    max-width: 80%;
+    margin: 1rem auto;
+  }
+}
+
+
+
+.about {
+  background-color: var(--light-gray);
+  color: var(--caput-mortuum);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.about-title {
+  position: relative;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--rich-black);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.about-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--brown-sugar);
+  border-radius: 2px;
+  animation: slideIn 1s ease forwards;
+}
+
+.about-img {
+  max-width: 90%;
+  box-shadow: rgb(0, 0, 0) 0px 0px 25px;
+  border-radius: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.about-bean{
+  width: 20%;
+  text-align: center;
+  align-self:center;
+  position: relative;
+  right: 40%;
+  filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, 0.433));
+
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 80px;
+    opacity: 1;
+  }
+}
+
+.about-text {
+  margin: 0 auto;
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--rich-black);
+  max-width: 80%;
+  font-weight: 400;
+  padding: 1.5rem 2rem;
+  background: var(--peach-puff);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.about-text p {
+  margin-bottom: 1.25rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.about-text strong {
+  color: var(--coral);
+  font-weight: 600;
+}
+
+
+@media (max-width: 768px) {
+  .about-text {
+    line-height: 1.5;
+  }
+
+  .about-img {
+    display: none;
+  }
+  .about {
+    position: relative; /* Ensure the pseudo-element positions correctly */
+    background-color: transparent;
+    background-size: cover;
+    overflow: hidden; /* Hide overflow to avoid scrollbars */
+  }
+  
+  .about::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/قهوة تركي.jpeg");
+    background-size: cover;
+    
+    background-position: center;
+    opacity: 0.5; /* 50% transparency */
+    z-index: -1; /* Ensure the background is behind content */
+  }
+  
+}
+
+
+/* menu */
+.menu {
+  background-color:white;
+  padding: 3rem 0;
+}
+
+.menu-title {
+  font-size: 2.5rem;
+  color: var(--rich-black);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.menu-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--brown-sugar);
+  border-radius: 2px;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.menu-img {
+  border-bottom: 3px solid var(--brown-sugar);
+  filter: drop-shadow(0 0 5em var(--gold));
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  padding: 1.5rem;
+  background-color: var(--peach-puff);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: var(--rich-black);
+  margin-bottom: 1.5rem; /* Slightly increased to accommodate the line */
+  position: relative; /* Added to position the ::after element relative to the title */
+  text-align: center; /* Center the title text */
+}
+
+.card-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px; /* Adjusted to place the line closer to the title */
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--brown-sugar);
+  border-radius: 2px;
+}
+
+
+.card-text {
+  font-size: 1rem;
+  color: var(--dark-charcoal);
+  margin: 1.5rem;
+}
+
+.menu-btn {
+  background-color: var(--caput-mortuum);
+  color: var(--lavender);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-btn:hover {
+  background-color: var(--coral);
+  transform: translateY(-2px);
+}
+
+.menu-btn:active {
+  transform: translateY(1px);
+}
+
+.menu-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .menu-title {
+    font-size: 2rem;
+  }
+}

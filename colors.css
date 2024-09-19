@@ -1,0 +1,64 @@
+:root {
+  /* CSS HEX */
+  --platinum: #D5DADEff;
+  --brown-sugar: #B27A5Cff;
+  --caput-mortuum: #41201Cff;
+  --rich-black: #08071Eff;
+  --french-gray: #ACBBC2ff;
+
+  --coyote: #845F35ff;
+--licorice: #190F08ff;
+--golden-brown: #966834ff;
+--field-drab: #6D542Bff;
+--black: #03010388;
+:root {
+  --light-gray: #D5DADEff;
+  --brown-sugar: #B27A5Cff;
+  --caput-mortuum: #41201Cff;
+  --rich-black: #08071Eff;
+  --french-gray: #ACBBC2ff;
+
+  /* Contrast Colors */
+  --dark-charcoal: #3B3A3Eff;
+  --dark-slate-gray: #3A3F44ff;
+  --peach-puff: #FFDAB9ff;
+  --lavender: #E6E6FAff;
+  --midnight-blue: #2C3E50ff;
+
+  /* Accent Colors */
+  --tomato-red: #FF6347ff;
+  --gold: #FFD700ff;
+  --sky-blue: #87CEEBff;
+  --coral: #FF7F50ff;
+}
+
+/* Example usage */
+body {
+  background-color: var(--light-gray);
+  color: var(--rich-black);
+}
+
+.header {
+  background-color: var(--brown-sugar);
+  color: var(--peach-puff);
+}
+
+.button-primary {
+  background-color: var(--tomato-red);
+  color: var(--lavender);
+}
+
+.button-secondary {
+  background-color: var(--sky-blue);
+  color: var(--dark-slate-gray);
+}
+
+.footer {
+  background-color: var(--caput-mortuum);
+  color: var(--gold);
+}
+
+.sidebar {
+  background-color: var(--french-gray);
+  color: var(--midnight-blue);
+}
